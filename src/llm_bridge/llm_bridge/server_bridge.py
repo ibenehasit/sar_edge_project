@@ -12,7 +12,7 @@ class ServerBridge(Node):
 
     def request_callback(self, msg):
         # Don't block the executor: do the LLM work in a thread
-        threading.Thread(target=self.handle, args=(msg.data,), daemon=True).start()
+        threading.Thread(target=self.process_request, args=(msg.data,), daemon=True).start()
 
     def publish(self, text):
         text = re.sub(r'<think>.*?</think>', '', text, flags=re.S).strip()
@@ -20,7 +20,7 @@ class ServerBridge(Node):
             out = String(); out.data = text
             self.publisher_.publish(out)
 
-    def handle(self, prompt):
+    def process_request(self, prompt):
         payload = {
             "model": "qwen3:1.7b",
             "prompt": prompt,
