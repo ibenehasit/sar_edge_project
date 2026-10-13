@@ -1,57 +1,56 @@
-import rclpy
+import json, re, threading
+import rclpy, requests
 from rclpy.node import Node
 from std_msgs.msg import String
-import requests
 
 class ServerBridge(Node):
     def __init__(self):
         super().__init__('server_bridge')
-        # Subscribe to requests from the Pi
-        self.subscription = self.create_subscription(
-            String,
-            'llm_request',
-            self.request_callback,
-            10)
-        # Publisher to send answers back to the Pi
+        self.create_subscription(String, 'llm_request', self.request_callback, 10)
         self.publisher_ = self.create_publisher(String, 'llm_response', 10)
-        self.get_logger().info('Server Bridge ready. Waiting for requests...')
+        self.get_logger().info('Server Bridge ready.')
 
     def request_callback(self, msg):
-        user_text = msg.data
-        self.get_logger().info(f'Received request: "{user_text}"')
-        
-        # Call the Ollama API
-        answer = self.call_ollama(user_text)
-        
-        # Publish the answer back to the Pi
-        response_msg = String()
-        response_msg.data = answer
-        self.publisher_.publish(response_msg)
-        self.get_logger().info(f'Sent response: "{answer[:50]}..."')
+        # Don't block the executor: do the LLM work in a thread
+        threading.Thread(target=self.handle, args=(msg.data,), daemon=True).start()
 
-    def call_ollama(self, prompt):
-        # This is the local API endpoint for Ollama
-        url = 'http://localhost:11434/api/generate'
-        
-        # The request payload (data) we send to Ollama
+    def publish(self, text):
+        text = re.sub(r'<think>.*?</think>', '', text, flags=re.S).strip()
+        if text:
+            out = String(); out.data = text
+            self.publisher_.publish(out)
+
+    def handle(self, prompt):
         payload = {
             "model": "qwen3:1.7b",
             "prompt": prompt,
-            "stream": False  # We want the full answer at once
+            "system": "You are a voice assistant. Reply in one to three short "
+                      "sentences of plain spoken English. No markdown, no lists.",
+            "stream": True,
+            "think": False,          # use "/no_think" in the prompt on older Ollama
+            "keep_alive": "30m",
+            "options": {"num_predict": 150, "num_ctx": 2048},
         }
-        
+        buf = ""
         try:
-            # Send a POST request to Ollama
-            response = requests.post(url, json=payload, timeout=60)
-            response.raise_for_status()  # Check for HTTP errors
-            
-            # Extract the generated text from the JSON response
-            result = response.json()
-            return result.get("response", "No response generated.")
-            
+            with requests.post('http://localhost:11434/api/generate',
+                               json=payload, stream=True, timeout=120) as r:
+                r.raise_for_status()
+                for line in r.iter_lines():
+                    if not line:
+                        continue
+                    chunk = json.loads(line)
+                    buf += chunk.get("response", "")
+                    # Emit each complete sentence as soon as it exists
+                    while (m := re.match(r'(.*?[.!?])\s+', buf, re.S)):
+                        self.publish(m.group(1))
+                        buf = buf[m.end():]
+                    if chunk.get("done"):
+                        break
         except requests.exceptions.RequestException as e:
-            self.get_logger().error(f'Ollama API error: {e}')
-            return "Error: Could not connect to the LLM server."
+            self.get_logger().error(f'Ollama error: {e}')
+            self.publish("Sorry, I couldn't reach the language model.")
+        self.publish(buf)  # whatever is left
 
 def main(args=None):
     rclpy.init(args=args)
