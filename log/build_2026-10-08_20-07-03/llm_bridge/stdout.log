@@ -1,0 +1,39 @@
+running egg_info
+creating ../../build/llm_bridge/llm_bridge.egg-info
+writing ../../build/llm_bridge/llm_bridge.egg-info/PKG-INFO
+writing dependency_links to ../../build/llm_bridge/llm_bridge.egg-info/dependency_links.txt
+writing entry points to ../../build/llm_bridge/llm_bridge.egg-info/entry_points.txt
+writing requirements to ../../build/llm_bridge/llm_bridge.egg-info/requires.txt
+writing top-level names to ../../build/llm_bridge/llm_bridge.egg-info/top_level.txt
+writing manifest file '../../build/llm_bridge/llm_bridge.egg-info/SOURCES.txt'
+reading manifest file '../../build/llm_bridge/llm_bridge.egg-info/SOURCES.txt'
+writing manifest file '../../build/llm_bridge/llm_bridge.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /root/ros2_ws/build/llm_bridge/build
+creating /root/ros2_ws/build/llm_bridge/build/lib
+creating /root/ros2_ws/build/llm_bridge/build/lib/llm_bridge
+copying llm_bridge/server_bridge.py -> /root/ros2_ws/build/llm_bridge/build/lib/llm_bridge
+copying llm_bridge/pi_client.py -> /root/ros2_ws/build/llm_bridge/build/lib/llm_bridge
+copying llm_bridge/__init__.py -> /root/ros2_ws/build/llm_bridge/build/lib/llm_bridge
+running install
+running install_lib
+creating /root/ros2_ws/install/llm_bridge/lib/python3.10/site-packages/llm_bridge
+copying /root/ros2_ws/build/llm_bridge/build/lib/llm_bridge/server_bridge.py -> /root/ros2_ws/install/llm_bridge/lib/python3.10/site-packages/llm_bridge
+copying /root/ros2_ws/build/llm_bridge/build/lib/llm_bridge/pi_client.py -> /root/ros2_ws/install/llm_bridge/lib/python3.10/site-packages/llm_bridge
+copying /root/ros2_ws/build/llm_bridge/build/lib/llm_bridge/__init__.py -> /root/ros2_ws/install/llm_bridge/lib/python3.10/site-packages/llm_bridge
+byte-compiling /root/ros2_ws/install/llm_bridge/lib/python3.10/site-packages/llm_bridge/server_bridge.py to server_bridge.cpython-310.pyc
+byte-compiling /root/ros2_ws/install/llm_bridge/lib/python3.10/site-packages/llm_bridge/pi_client.py to pi_client.cpython-310.pyc
+byte-compiling /root/ros2_ws/install/llm_bridge/lib/python3.10/site-packages/llm_bridge/__init__.py to __init__.cpython-310.pyc
+running install_data
+creating /root/ros2_ws/install/llm_bridge/share/ament_index
+creating /root/ros2_ws/install/llm_bridge/share/ament_index/resource_index
+creating /root/ros2_ws/install/llm_bridge/share/ament_index/resource_index/packages
+copying resource/llm_bridge -> /root/ros2_ws/install/llm_bridge/share/ament_index/resource_index/packages
+copying package.xml -> /root/ros2_ws/install/llm_bridge/share/llm_bridge
+running install_egg_info
+Copying ../../build/llm_bridge/llm_bridge.egg-info to /root/ros2_ws/install/llm_bridge/lib/python3.10/site-packages/llm_bridge-0.0.0-py3.10.egg-info
+running install_scripts
+Installing pi_client script to /root/ros2_ws/install/llm_bridge/lib/llm_bridge
+Installing server_bridge script to /root/ros2_ws/install/llm_bridge/lib/llm_bridge
+writing list of installed files to '/root/ros2_ws/build/llm_bridge/install.log'

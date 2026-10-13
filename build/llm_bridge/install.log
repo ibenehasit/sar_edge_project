@@ -1,0 +1,17 @@
+/root/ros2_ws/install/llm_bridge/lib/python3.10/site-packages/llm_bridge/server_bridge.py
+/root/ros2_ws/install/llm_bridge/lib/python3.10/site-packages/llm_bridge/pi_client.py
+/root/ros2_ws/install/llm_bridge/lib/python3.10/site-packages/llm_bridge/__init__.py
+/root/ros2_ws/install/llm_bridge/lib/python3.10/site-packages/llm_bridge/__pycache__/server_bridge.cpython-310.pyc
+/root/ros2_ws/install/llm_bridge/lib/python3.10/site-packages/llm_bridge/__pycache__/pi_client.cpython-310.pyc
+/root/ros2_ws/install/llm_bridge/lib/python3.10/site-packages/llm_bridge/__pycache__/__init__.cpython-310.pyc
+/root/ros2_ws/install/llm_bridge/share/ament_index/resource_index/packages/llm_bridge
+/root/ros2_ws/install/llm_bridge/share/llm_bridge/package.xml
+/root/ros2_ws/install/llm_bridge/lib/python3.10/site-packages/llm_bridge-0.0.0-py3.10.egg-info/SOURCES.txt
+/root/ros2_ws/install/llm_bridge/lib/python3.10/site-packages/llm_bridge-0.0.0-py3.10.egg-info/dependency_links.txt
+/root/ros2_ws/install/llm_bridge/lib/python3.10/site-packages/llm_bridge-0.0.0-py3.10.egg-info/top_level.txt
+/root/ros2_ws/install/llm_bridge/lib/python3.10/site-packages/llm_bridge-0.0.0-py3.10.egg-info/PKG-INFO
+/root/ros2_ws/install/llm_bridge/lib/python3.10/site-packages/llm_bridge-0.0.0-py3.10.egg-info/zip-safe
+/root/ros2_ws/install/llm_bridge/lib/python3.10/site-packages/llm_bridge-0.0.0-py3.10.egg-info/entry_points.txt
+/root/ros2_ws/install/llm_bridge/lib/python3.10/site-packages/llm_bridge-0.0.0-py3.10.egg-info/requires.txt
+/root/ros2_ws/install/llm_bridge/lib/llm_bridge/pi_client
+/root/ros2_ws/install/llm_bridge/lib/llm_bridge/server_bridge
