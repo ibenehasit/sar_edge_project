@@ -1,10 +1,13 @@
-import json, re, threading
-import rclpy, requests
-from rclpy.node import Node
+from std_msgs.uint8_multi_array import UInt8MultiArray
 from std_msgs.msg import String
+from piper.voice import PiperVoice, SynthesisConfig
+import subprocess
+import numpy as np
 
 class ServerBridge(Node):
     def __init__(self):
+        self.publisher_ = self.create_publisher(UInt8MultiArray, 'llm_audio_response', 10)
+        self.voice = PiperVoice.load("/path/to/en_GB-alba-medium.onnx") 
         super().__init__('server_bridge')
         self.create_subscription(String, 'llm_request', self.request_callback, 10)
         self.publisher_ = self.create_publisher(String, 'llm_response', 10)

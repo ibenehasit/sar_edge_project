@@ -9,22 +9,25 @@ class PiClient(Node):
         self.publisher_ = self.create_publisher(String, 'llm_request', 10)
         # Subscriber for receiving answers from the server
         self.subscription = self.create_subscription(
-            String,
-            'llm_response',
-            self.response_callback,
+            UInt8MultiArray,
+            'llm_audio_response',
+            self.audio_callback,
             10)
         self.get_logger().info('Pi Client ready. Type your message and press Enter.')
 
-    def response_callback(self, msg):
-        # This prints the answer received from the server
-        self.get_logger().info(f'<<< Server says: {msg.data}')
-
-    def send_request(self, text):
-        # This creates a message and publishes it
-        msg = String()
-        msg.data = text
-        self.publisher_.publish(msg)
-        self.get_logger().info(f'>>> Sending: {text}')
+    def audio_callback(self, msg):
+        # Convert the byte array back to bytes
+        raw_audio = bytes(msg.data)
+        
+        # Pipe directly to aplay
+        # Piper's en_GB-alan-medium outputs 22050 Hz, mono, signed 16-bit LE
+        process = subprocess.Popen(
+            ['aplay', '-r', '22050', '-f', 'S16_LE', '-t', 'raw', '-c', '1'],
+            stdin=subprocess.PIPE,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL
+        )
+        process.communicate(input=raw_audio)
 
 def main(args=None):
     rclpy.init(args=args)
