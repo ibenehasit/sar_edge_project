@@ -1,6 +1,9 @@
 import rclpy
+import subprocess
+import queue
+import threading
 from rclpy.node import Node
-from std_msgs.msg import String
+from std_msgs.msg import String, UInt8MultiArray
 
 class PiClient(Node):
     def __init__(self):
