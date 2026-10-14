@@ -16,3 +16,6 @@ venv/
 # OS files
 .DS_Store
 Thumbs.db
+
+# voice models
+voices/en_GB-alba-medium.onnx
