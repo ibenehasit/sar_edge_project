@@ -1,4 +1,4 @@
-from std_msgs.uint8_multi_array import UInt8MultiArray
+from std_msgs.msg import UInt8MultiArray
 from std_msgs.msg import String
 from piper.voice import PiperVoice, SynthesisConfig
 import subprocess
@@ -19,9 +19,21 @@ class ServerBridge(Node):
 
     def publish(self, text):
         text = re.sub(r'<think>.*?</think>', '', text, flags=re.S).strip()
-        if text:
-            out = String(); out.data = text
-            self.publisher_.publish(out)
+        if not text:
+            return
+        
+        # Synthesize audio from text
+        audio_chunks = []
+        for chunk in self.voice.synthesize(text):
+            audio_chunks.append(chunk.audio_int16_bytes)
+        
+        # Combine all chunks into one byte string
+        raw_audio = b''.join(audio_chunks)
+        
+        # Publish as UInt8MultiArray
+        msg = UInt8MultiArray()
+        msg.data = list(raw_audio)
+        self.publisher_.publish(msg)
 
     def process_request(self, prompt):
         payload = {
