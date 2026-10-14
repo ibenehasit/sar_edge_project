@@ -9,7 +9,7 @@ from rclpy.node import Node
 from std_msgs.msg import String, UInt8MultiArray
 from piper import PiperVoice
 
-PIPER_MODEL = "~/en_GB-alba-medium.onnx"   # change this to your real path
+PIPER_MODEL = "/ros2_ws/voices/en_GB-alba-medium.onnx"
 
 
 class ServerBridge(Node):
