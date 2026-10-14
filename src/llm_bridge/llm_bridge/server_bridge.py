@@ -1,39 +1,51 @@
-from std_msgs.msg import UInt8MultiArray
-from std_msgs.msg import String
-from piper.voice import PiperVoice, SynthesisConfig
-import subprocess
-import numpy as np
+import json
+import re
+import struct
+import threading
+
+import requests
+import rclpy
+from rclpy.node import Node
+from std_msgs.msg import String, UInt8MultiArray
+from piper import PiperVoice
+
+PIPER_MODEL = "/home/ibene/en_GB-alba-medium.onnx"   # change this to your real path
+
 
 class ServerBridge(Node):
     def __init__(self):
-        self.publisher_ = self.create_publisher(UInt8MultiArray, 'llm_audio_response', 10)
-        self.voice = PiperVoice.load("/path/to/en_GB-alba-medium.onnx") 
-        super().__init__('server_bridge')
+        super().__init__('server_bridge')          # must come first
+
+        self.voice = PiperVoice.load(PIPER_MODEL)
+        self.tts_lock = threading.Lock()           # keeps sentences in order
+
         self.create_subscription(String, 'llm_request', self.request_callback, 10)
-        self.publisher_ = self.create_publisher(String, 'llm_response', 10)
+        self.text_pub = self.create_publisher(String, 'llm_response', 10)
+        self.audio_pub = self.create_publisher(UInt8MultiArray, 'llm_audio_response', 10)
+
         self.get_logger().info('Server Bridge ready.')
 
     def request_callback(self, msg):
         # Don't block the executor: do the LLM work in a thread
-        threading.Thread(target=self.process_request, args=(msg.data,), daemon=True).start()
+        threading.Thread(target=self.process_request,
+                         args=(msg.data,), daemon=True).start()
 
     def publish(self, text):
         text = re.sub(r'<think>.*?</think>', '', text, flags=re.S).strip()
         if not text:
             return
-        
-        # Synthesize audio from text
-        audio_chunks = []
-        for chunk in self.voice.synthesize(text):
-            audio_chunks.append(chunk.audio_int16_bytes)
-        
-        # Combine all chunks into one byte string
-        raw_audio = b''.join(audio_chunks)
-        
-        # Publish as UInt8MultiArray
-        msg = UInt8MultiArray()
-        msg.data = list(raw_audio)
-        self.publisher_.publish(msg)
+
+        # Also publish the text, handy for debugging with `ros2 topic echo`
+        t = String()
+        t.data = text
+        self.text_pub.publish(t)
+
+        # Synthesize and send audio, one message per Piper chunk
+        with self.tts_lock:
+            for chunk in self.voice.synthesize(text):
+                out = UInt8MultiArray()
+                out.data = struct.pack('<I', chunk.sample_rate) + chunk.audio_int16_bytes
+                self.audio_pub.publish(out)
 
     def process_request(self, prompt):
         payload = {
@@ -67,12 +79,14 @@ class ServerBridge(Node):
             self.publish("Sorry, I couldn't reach the language model.")
         self.publish(buf)  # whatever is left
 
+
 def main(args=None):
     rclpy.init(args=args)
     node = ServerBridge()
     rclpy.spin(node)
     node.destroy_node()
     rclpy.shutdown()
+
 
 if __name__ == '__main__':
     main()
