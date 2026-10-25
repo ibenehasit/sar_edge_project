@@ -57,13 +57,24 @@ class ServerBridge(Node):
     def process_request(self, prompt):
         with self.history_lock:
             self.history.append({"role": "user", "content": prompt})
-            messages = [{"role": "system",
-                        "content": "You are a voice assistant. Reply in one to three short "
-                                    "sentences of plain spoken English. No markdown, no lists."}
+            messages = [
+                        {
+                            "role": "system",
+                            "content": (
+                                "You are a personal voice assistant. "
+                                "Use the entire conversation history to answer questions. "
+                                "Remember personal details the user shares, such as their name "
+                                "and preferences, and use those details in later replies. "
+                                "If a detail has not been provided or you cannot determine it "
+                                "from the conversation, say so honestly. "
+                                "Reply in one to three short sentences of plain spoken English. "
+                                "No markdown or lists."
+                            )
+                        }
                         ] + self.history[-self.MAX_TURNS * 2:]
 
         payload = {
-            "model": "qwen3:4b",
+            "model": "qwen3:4b-instruct-2507-q4_K_M",
             "messages": messages,
             "stream": True,
             "think": False,
