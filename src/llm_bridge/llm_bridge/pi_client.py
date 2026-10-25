@@ -14,7 +14,7 @@ class PiClient(Node):
         self.publisher_ = self.create_publisher(String, 'llm_request', 10)
         self.subscription = self.create_subscription(
             UInt8MultiArray, 'llm_audio_response', self.audio_callback, 10)
-        self.text_sub = self.create_subscription(String, 'llm_response', self.text_callback 10)
+        self.text_sub = self.create_subscription(String, 'llm_response', self.text_callback, 10)
         self.play_q = queue.Queue()
         threading.Thread(target=self.player, daemon=True).start()
 
