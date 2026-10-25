@@ -25,6 +25,11 @@ class ServerBridge(Node):
 
         self.get_logger().info('Server Bridge ready.')
 
+        #giving the bot memory of the convo
+        self.history = []              # list of {"role": ..., "content": ...}
+        self.history_lock = threading.Lock()
+        self.MAX_TURNS = 8             # keep the last 6 exchanges
+
     def request_callback(self, msg):
         # Don't block the executor: do the LLM work in a thread
         threading.Thread(target=self.process_request,
@@ -50,27 +55,34 @@ class ServerBridge(Node):
                 self.audio_pub.publish(out)
 
     def process_request(self, prompt):
+        with self.history_lock:
+            self.history.append({"role": "user", "content": prompt})
+            messages = [{"role": "system",
+                        "content": "You are a voice assistant. Reply in one to three short "
+                                    "sentences of plain spoken English. No markdown, no lists."}
+                        ] + self.history[-self.MAX_TURNS * 2:]
+
         payload = {
             "model": "qwen3:1.7b",
-            "prompt": prompt,
-            "system": "You are a voice assistant. Reply in one to three short "
-                      "sentences of plain spoken English. No markdown, no lists.",
+            "messages": messages,
             "stream": True,
-            "think": False,          # use "/no_think" in the prompt on older Ollama
+            "think": False,
             "keep_alive": "30m",
             "options": {"num_predict": 150, "num_ctx": 2048},
         }
         buf = ""
+        full_reply = ""
         try:
-            with requests.post('http://localhost:11434/api/generate',
-                               json=payload, stream=True, timeout=120) as r:
+            with requests.post('http://localhost:11434/api/chat',
+                            json=payload, stream=True, timeout=120) as r:
                 r.raise_for_status()
                 for line in r.iter_lines():
                     if not line:
                         continue
                     chunk = json.loads(line)
-                    buf += chunk.get("response", "")
-                    # Emit each complete sentence as soon as it exists
+                    piece = chunk.get("message", {}).get("content", "")   # note: different field
+                    buf += piece
+                    full_reply += piece
                     while (m := re.match(r'(.*?[.!?])\s+', buf, re.S)):
                         self.publish(m.group(1))
                         buf = buf[m.end():]
@@ -79,7 +91,11 @@ class ServerBridge(Node):
         except requests.exceptions.RequestException as e:
             self.get_logger().error(f'Ollama error: {e}')
             self.publish("Sorry, I couldn't reach the language model.")
-        self.publish(buf)  # whatever is left
+        self.publish(buf)
+
+        if full_reply.strip():
+            with self.history_lock:
+                self.history.append({"role": "assistant", "content": full_reply.strip()})
 
 
 def main(args=None):
