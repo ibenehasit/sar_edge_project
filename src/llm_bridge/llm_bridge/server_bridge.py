@@ -63,7 +63,7 @@ class ServerBridge(Node):
                         ] + self.history[-self.MAX_TURNS * 2:]
 
         payload = {
-            "model": "qwen3:1.7b",
+            "model": "qwen3:4b",
             "messages": messages,
             "stream": True,
             "think": False,
