@@ -20,10 +20,14 @@ class ServerBridge(Node):
         self.tts_lock = threading.Lock()           # keeps sentences in order
 
         self.create_subscription(String, 'llm_request', self.request_callback, 10)
+        self.text_sub = self.create_subscription(String, 'llm_response', self.text_callback 10)
         self.text_pub = self.create_publisher(String, 'llm_response', 10)
         self.audio_pub = self.create_publisher(UInt8MultiArray, 'llm_audio_response', 10)
 
         self.get_logger().info('Server Bridge ready.')
+
+    def text_callback(self, msg):
+        print(f'\n<<< {msg.data}')
 
     def request_callback(self, msg):
         # Don't block the executor: do the LLM work in a thread
