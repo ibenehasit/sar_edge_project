@@ -1,0 +1,237 @@
+
+[
+  {
+    "name": "Ad hominem",
+    "definition": "Attacking the person making a claim instead of the claim itself, so the argument's merits are ignored.",
+    "example": "You can't trust his budget proposal, he's been divorced twice.",
+    "not_to_be_confused_with": "Pointing out a genuine conflict of interest that is relevant to the claim."
+  },
+  {
+    "name": "Straw man",
+    "definition": "Misrepresenting an opponent's position as something weaker or more extreme, then refuting that version.",
+    "example": "She wants stricter speed limits, so she wants everyone to drive at walking pace.",
+    "not_to_be_confused_with": "Fairly summarising a view and then criticising it."
+  },
+  {
+    "name": "Appeal to authority",
+    "definition": "Claiming something must be true because an authority or expert says so, without examining the actual evidence or their relevant expertise.",
+    "example": "A famous actor says this investment is guaranteed to succeed, so it must be safe.",
+    "not_to_be_confused_with": "Using the informed opinion of a qualified expert as relevant supporting evidence."
+  },
+  {
+    "name": "Appeal to popularity (Argumentum ad populum)",
+    "definition": "Claiming something is true, correct, or good because many people believe it or do it.",
+    "example": "Millions of people believe this rumour, so there must be something to it.",
+    "not_to_be_confused_with": "Using popularity as evidence of a product's market demand."
+  },
+  {
+    "name": "False dilemma (False dichotomy)",
+    "definition": "Presenting only two possible options when additional alternatives exist.",
+    "example": "Either you support this policy or you don't care about the country.",
+    "not_to_be_confused_with": "Identifying two genuinely mutually exclusive possibilities."
+  },
+  {
+    "name": "Slippery slope",
+    "definition": "Claiming that a relatively small initial action will inevitably trigger a chain of increasingly extreme consequences without sufficient evidence.",
+    "example": "If we allow students to submit one assignment late, soon nobody will ever meet a deadline.",
+    "not_to_be_confused_with": "Demonstrating a plausible causal chain supported by evidence."
+  },
+  {
+    "name": "Hasty generalisation",
+    "definition": "Drawing a broad conclusion from an insufficient or unrepresentative sample.",
+    "example": "Two tourists from that country were rude to me, so everyone from there must be rude.",
+    "not_to_be_confused_with": "Drawing a cautious conclusion from a sufficiently large and representative sample."
+  },
+  {
+    "name": "Post hoc ergo propter hoc",
+    "definition": "Assuming that because one event happened after another, the first event must have caused the second.",
+    "example": "I wore my lucky socks and then we won the match, so my socks caused the victory.",
+    "not_to_be_confused_with": "Establishing causation through evidence, controlled experiments, or a credible causal mechanism."
+  },
+  {
+    "name": "Cum hoc ergo propter hoc",
+    "definition": "Assuming that because two things occur together, one must cause the other.",
+    "example": "Ice cream sales and drownings both increase in summer, so ice cream must cause drownings.",
+    "not_to_be_confused_with": "Identifying a genuine causal relationship between correlated variables."
+  },
+  {
+    "name": "Begging the question (Circular reasoning)",
+    "definition": "Using a conclusion as one of the premises supporting that same conclusion.",
+    "example": "This law is just because it is the right law to have.",
+    "not_to_be_confused_with": "Using an independently established premise to support a conclusion."
+  },
+  {
+    "name": "Red herring",
+    "definition": "Introducing an irrelevant point to distract from the original argument or question.",
+    "example": "Why are you questioning my spending? You should be grateful that I work so hard.",
+    "not_to_be_confused_with": "Introducing genuinely relevant additional context."
+  },
+  {
+    "name": "Tu quoque",
+    "definition": "Rejecting criticism by accusing the critic of behaving inconsistently with their own advice.",
+    "example": "You tell me to stop smoking, but you used to smoke yourself, so your argument is invalid.",
+    "not_to_be_confused_with": "Pointing out hypocrisy when the consistency or credibility of the speaker is genuinely relevant."
+  },
+  {
+    "name": "Appeal to ignorance (Argumentum ad ignorantiam)",
+    "definition": "Claiming something is true because it has not been proven false, or false because it has not been proven true.",
+    "example": "Nobody has proven that aliens haven't visited Earth, so they definitely have.",
+    "not_to_be_confused_with": "Treating a lack of evidence as relevant when evidence would reasonably be expected to exist."
+  },
+  {
+    "name": "Appeal to emotion",
+    "definition": "Using emotional reactions such as fear, pity, anger, or guilt instead of relevant evidence to establish a conclusion.",
+    "example": "You must support this proposal, otherwise think of all the children who will suffer.",
+    "not_to_be_confused_with": "Using emotional language to communicate the genuine human consequences of an argument."
+  },
+  {
+    "name": "Appeal to tradition",
+    "definition": "Claiming something is correct or desirable simply because it has been done that way for a long time.",
+    "example": "We've always taught history this way, so changing the curriculum would be wrong.",
+    "not_to_be_confused_with": "Recognising that established practices may contain accumulated experience or useful knowledge."
+  },
+  {
+    "name": "Appeal to nature",
+    "definition": "Assuming that something is good, safe, or morally right simply because it is natural, or bad because it is artificial.",
+    "example": "This chemical is naturally occurring, so it cannot possibly be harmful.",
+    "not_to_be_confused_with": "Evaluating natural and synthetic substances according to their actual properties and effects."
+  },
+  {
+    "name": "No true Scotsman",
+    "definition": "Protecting a generalisation from counterexamples by arbitrarily redefining the category to exclude them.",
+    "example": "No real environmentalist drives an SUV. Anyone who does isn't a real environmentalist.",
+    "not_to_be_confused_with": "Using a clearly established definition to distinguish between different categories."
+  },
+  {
+    "name": "Moving the goalposts",
+    "definition": "Changing the requirements for accepting an argument after the original requirements have already been satisfied.",
+    "example": "You said one study would convince you. Here's the study. Well, one study isn't enough; I need ten.",
+    "not_to_be_confused_with": "Requesting additional evidence when new information reveals a genuine weakness."
+  },
+  {
+    "name": "Equivocation",
+    "definition": "Using a word or phrase with multiple meanings in different parts of an argument to create a misleading conclusion.",
+    "example": "The sign says fine for parking here, so parking here must be excellent.",
+    "not_to_be_confused_with": "Using words with different meanings when the distinction is clearly established."
+  },
+  {
+    "name": "False analogy",
+    "definition": "Comparing two things that are insufficiently similar in relevant respects to support the conclusion.",
+    "example": "Running a country is just like running a household, so national debt must be managed exactly like household debt.",
+    "not_to_be_confused_with": "Using an analogy that highlights relevant similarities while acknowledging important differences."
+  },
+  {
+    "name": "Composition fallacy",
+    "definition": "Assuming that what is true of individual parts must also be true of the whole.",
+    "example": "Every player on the team is excellent, so the team must be unbeatable.",
+    "not_to_be_confused_with": "Showing that individual properties genuinely combine to produce a property of the whole."
+  },
+  {
+    "name": "Division fallacy",
+    "definition": "Assuming that what is true of a whole must also be true of each of its individual parts.",
+    "example": "That university is wealthy, so every student attending it must be wealthy.",
+    "not_to_be_confused_with": "Identifying properties that genuinely apply to both a whole and its components."
+  },
+  {
+    "name": "Cherry picking",
+    "definition": "Selecting only evidence that supports a conclusion while ignoring relevant contradictory evidence.",
+    "example": "This medicine worked for three people, so it is effective, ignoring the hundreds of unsuccessful cases.",
+    "not_to_be_confused_with": "Focusing on a particular subset of evidence when the scope and selection criteria are justified."
+  },
+  {
+    "name": "Anecdotal fallacy",
+    "definition": "Using a personal experience or isolated example as sufficient evidence to establish a general conclusion.",
+    "example": "My grandfather smoked every day and lived to 95, so smoking can't be dangerous.",
+    "not_to_be_confused_with": "Using personal experiences as illustrative examples alongside broader evidence."
+  },
+  {
+    "name": "Burden of proof reversal",
+    "definition": "Demanding that someone else disprove a claim rather than providing evidence for the claim being made.",
+    "example": "Prove that my invisible dragon doesn't exist.",
+    "not_to_be_confused_with": "Asking someone to justify a claim they have already made."
+  },
+  {
+    "name": "Special pleading",
+    "definition": "Applying a standard or rule inconsistently by inventing an exception for a particular case without sufficient justification.",
+    "example": "Rules against lying apply to everyone except me, because my intentions are always good.",
+    "not_to_be_confused_with": "Recognising a legitimate exception supported by relevant differences."
+  },
+  {
+    "name": "Genetic fallacy",
+    "definition": "Accepting or rejecting a claim based solely on its origin or source rather than evaluating its merits.",
+    "example": "That idea came from a politician, so it must be wrong.",
+    "not_to_be_confused_with": "Considering the origin of information when it provides relevant evidence about its reliability."
+  },
+  {
+    "name": "Guilt by association",
+    "definition": "Discrediting an individual or argument by associating it with a person or group considered undesirable.",
+    "example": "That scientist once worked with a controversial organisation, so none of their research can be trusted.",
+    "not_to_be_confused_with": "Identifying a demonstrable shared interest, collaboration, or conflict that is relevant to the argument."
+  },
+  {
+    "name": "Middle ground fallacy",
+    "definition": "Assuming that a compromise between two opposing positions must be correct simply because it lies between them.",
+    "example": "One person says the Earth is round and another says it is flat, so the truth must be somewhere in between.",
+    "not_to_be_confused_with": "Finding a reasonable compromise when both positions have valid considerations."
+  },
+  {
+    "name": "Texas sharpshooter fallacy",
+    "definition": "Selecting patterns or clusters from random data after the fact and presenting them as evidence of a meaningful relationship.",
+    "example": "A company highlights three successful predictions from hundreds of random guesses and claims its system is remarkably accurate.",
+    "not_to_be_confused_with": "Testing a predicted pattern against independent data."
+  },
+  {
+    "name": "False cause",
+    "definition": "Incorrectly identifying a causal relationship between events without sufficient evidence.",
+    "example": "The economy improved after the new mayor took office, so the mayor must have caused the improvement.",
+    "not_to_be_confused_with": "Establishing causation using appropriate evidence while accounting for alternative explanations."
+  },
+  {
+    "name": "Loaded question",
+    "definition": "Asking a question that contains an unproven assumption, making any straightforward answer appear to concede that assumption.",
+    "example": "Have you stopped cheating on your exams?",
+    "not_to_be_confused_with": "Asking a direct question based on facts that have already been established."
+  },
+  {
+    "name": "Complex question fallacy",
+    "definition": "Combining multiple questions or assumptions into one question so that answering it appears to accept all of them.",
+    "example": "Why are you dishonest and unwilling to admit your mistakes?",
+    "not_to_be_confused_with": "Asking multiple related questions after establishing their individual premises."
+  },
+  {
+    "name": "Argument from consequences",
+    "definition": "Claiming that a proposition must be true or false because its consequences would be desirable or undesirable.",
+    "example": "Climate change cannot be real because that would mean we need to change our lifestyles.",
+    "not_to_be_confused_with": "Evaluating the practical consequences of accepting a proposition separately from its truth."
+  },
+  {
+    "name": "Appeal to wealth (Argumentum ad crumenam)",
+    "definition": "Assuming that a wealthy person must be correct because of their financial success.",
+    "example": "He's a billionaire, so his opinions on economics must be right.",
+    "not_to_be_confused_with": "Considering someone's financial experience when it is directly relevant to a discussion."
+  },
+  {
+    "name": "Appeal to poverty (Argumentum ad lazarum)",
+    "definition": "Assuming that a poor person must be more honest, virtuous, or correct because they are poor.",
+    "example": "She has very little money, so she must be more trustworthy than a wealthy politician.",
+    "not_to_be_confused_with": "Considering how financial circumstances may affect someone's experiences or interests."
+  },
+  {
+    "name": "Kettle logic",
+    "definition": "Using multiple contradictory arguments to defend the same conclusion, as though all could be true simultaneously.",
+    "example": "I never borrowed your car. Even if I did, I returned it. And besides, it was already damaged.",
+    "not_to_be_confused_with": "Offering several compatible alternative explanations or defences."
+  },
+  {
+    "name": "Nirvana fallacy",
+    "definition": "Rejecting a realistic solution because it is imperfect when compared with an impossible or ideal alternative.",
+    "example": "Seatbelts don't prevent every road death, so there's no point wearing them.",
+    "not_to_be_confused_with": "Criticising a solution because its real-world limitations make it ineffective or unsuitable."
+  },
+  {
+    "name": "Motte-and-bailey fallacy",
+    "definition": "Making a controversial or extreme claim, then retreating to a much more defensible but weaker claim when challenged, before later returning to the original position.",
+    "example": "Social media is destroying society. I only meant that social media can sometimes have negative effects. So clearly, it's destroying society.",
+    "not_to_be_confused_with": "Clarifying an ambiguous statement or genuinely revising a position after criticism."
+  }
+]

@@ -26,6 +26,7 @@ setup(
         'console_scripts': [
             'pi_client = llm_bridge.pi_client:main',
             'server_bridge = llm_bridge.server_bridge:main',
+            'fallacy_bot = llm_bridge.fallacy_bot:main',
         ],
     },
 )
